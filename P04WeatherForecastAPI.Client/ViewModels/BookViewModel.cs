@@ -39,6 +39,10 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         public async void GetProducts()
         {
             visibleBooks.Clear();
+            books.Clear();
+            page = 0;
+            ShownPage = "0";
+            current = 0;
             var BookResult = await _bookService.ReadBooksAsync();
             int count = 0;
             books.Add(new List<Book>());

@@ -28,31 +28,10 @@ namespace P05Shop.API.Controllers
                 return  StatusCode(result.CodeError, $"{result.Message}");
         }
 
-        [HttpGet("ReadBook/{id}")]
-        public async Task<ActionResult<ServiceResponse<List<Book>>>> GetBook([FromRoute] int id)
-        {
-            var result = await _bookService.ReadByIdBooksAsync(id);
-
-            if (result.Success)
-                return Ok(result);
-            else
-                return StatusCode(result.CodeError, $"{result.Message}");
-        }
-
         [HttpPost("createBook")] 
         public async Task<ActionResult<ServiceResponse<List<Book>>>> AddBook([FromBody] Book book)
         {
             var result = await _bookService.CreateBookAsync(book);
-
-            if (result.Success)
-                return Ok(result);
-            else
-                return StatusCode(result.CodeError, $"{result.Message}");
-        }
-        [HttpPost("createMultipleBooks")]
-        public async Task<ActionResult<ServiceResponse<List<Book>>>> AddBooks([FromBody] List<Book> book)
-        {
-            var result = await _bookService.CreateMultipleBookAsync(book);
 
             if (result.Success)
                 return Ok(result);

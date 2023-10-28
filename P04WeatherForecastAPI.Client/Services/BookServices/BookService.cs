@@ -37,14 +37,6 @@ namespace P04WeatherForecastAPI.Client.Services.BookServices
             return result;
         }
 
-        public async Task<ServiceResponse<string>> CreateMultipleBookAsync(List<Book> book)
-        {
-            JsonContent content = JsonContent.Create(book);
-            var response = await _httpClient.PostAsync(_appSettings.BaseBookEndpoint.AddMultipleBookAsync, content);
-            var json = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<ServiceResponse<string>>(json);
-            return result;
-        }
 
         public async Task<ServiceResponse<string>> DeleteBookAsync(int id)
         {
@@ -59,14 +51,6 @@ namespace P04WeatherForecastAPI.Client.Services.BookServices
             var response = await _httpClient.GetAsync(_appSettings.BaseBookEndpoint.GetBooksAsync);
             var json = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<ServiceResponse<List<Book>>>(json);
-            return result;
-        }
-
-        public async Task<ServiceResponse<Book>> ReadByIdBooksAsync(int id)
-        {
-            var response = await _httpClient.GetAsync(_appSettings.BaseBookEndpoint.GetByIdBooksAsync + "/" +id.ToString());
-            var json = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<ServiceResponse<Book>>(json);
             return result;
         }
 

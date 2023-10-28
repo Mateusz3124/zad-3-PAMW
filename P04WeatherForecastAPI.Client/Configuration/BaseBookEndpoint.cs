@@ -10,10 +10,8 @@ namespace P04WeatherForecastAPI.Client.Configuration
     {
         public string Base_url { get; set; }
         public string AddBookAsync { get; set; }
-        public string AddMultipleBookAsync { get; set; }
         public string DeleteBookAsync { get; set; }
         public string GetBooksAsync { get; set; }
-        public string GetByIdBooksAsync { get; set; }
         public string UpdateBookAsync { get; set; }
 
     }
